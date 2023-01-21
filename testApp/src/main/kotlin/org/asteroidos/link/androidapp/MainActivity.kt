@@ -6,7 +6,7 @@
  * See the LICENSE.adoc file for details.
  */
 
-package org.asteroidos.link.androidapp
+package org.asteroidos.link.testapp
 
 import android.Manifest
 import android.app.AlertDialog
@@ -50,7 +50,7 @@ import org.asteroidos.link.Watches
 import org.asteroidos.link.getWatches
 import org.asteroidos.link.toBluetoothAddress
 
-private const val TAG = "AndroidApp.MainActivity"
+private const val TAG = "TestApp.MainActivity"
 
 private val requiredPermissions =
     arrayOf(Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION) +

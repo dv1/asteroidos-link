@@ -10,7 +10,7 @@
 rootProject.name = "asteroidos-link"
 
 include(":asteroidos-link")
-include(":androidApp")
+include(":testApp")
 
 pluginManagement {
     repositories {
@@ -51,7 +51,7 @@ dependencyResolutionManagement {
             library("nordic-ble-ktx", "no.nordicsemi.android", "ble-ktx").versionRef("nordic-ble")
         }
 
-        create("androidAppLibs") {
+        create("testAppLibs") {
             version("androidx-lifecycle-runtime-ktx", "2.5.1")
             version("androidx-activity", "1.6.1")
             version("androidx-navigation", "2.5.3")

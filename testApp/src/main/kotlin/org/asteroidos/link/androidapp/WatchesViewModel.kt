@@ -6,7 +6,7 @@
  * See the LICENSE.adoc file for details.
  */
 
-package org.asteroidos.link.androidapp
+package org.asteroidos.link.testapp
 
 import android.util.Log
 import androidx.lifecycle.ViewModel
@@ -33,7 +33,7 @@ import org.asteroidos.link.Watches
 import org.asteroidos.link.WeatherConditionID
 import kotlin.random.Random
 
-private const val TAG = "AndroidApp.WatchesViewModel"
+private const val TAG = "TestApp.WatchesViewModel"
 
 class WatchesViewModel(private val watches: Watches, initialPairedWatch: Watch?) : ViewModel() {
     var discoveredWatchesList = listOf<Watches.DiscoveredWatch>()
@@ -201,9 +201,9 @@ class WatchesViewModel(private val watches: Watches, initialPairedWatch: Watch?)
     suspend fun sendNotification() {
         _pairedWatch.value?.sendNotification(
             Notification(
-                packageName = "androidApp",
+                packageName = "testApp",
                 id = 1234,
-                applicationName = "AndroidApp",
+                applicationName = "TestApp",
                 applicationIcon = "",
                 summary = "Test notification",
                 body = "This is a test notification, timestamp: ${Clock.System.now()}",

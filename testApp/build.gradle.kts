@@ -8,11 +8,11 @@ plugins {
 }
 
 android {
-    namespace = "org.asteroidos.link.androidapp"
+    namespace = "org.asteroidos.link.testapp"
     compileSdk = android_compile_sdk
 
     defaultConfig {
-    	applicationId = "org.asteroidos.link.androidapp"
+        applicationId = "org.asteroidos.link.testapp"
         minSdk = android_min_sdk
         targetSdk = android_target_sdk
         versionCode = 1
@@ -59,15 +59,15 @@ dependencies {
     implementation(libs.androidx.core)
     implementation(libs.kotlinx.coroutines.core)
     implementation(libs.kotlinx.datetime)
-    implementation(androidAppLibs.androidx.lifecycle)
-    implementation(androidAppLibs.androidx.activity)
-    implementation(androidAppLibs.androidx.activity.compose)
-    implementation(androidAppLibs.androidx.compose.ui)
-    implementation(androidAppLibs.androidx.compose.ui.tooling)
-    implementation(androidAppLibs.androidx.compose.material)
-    implementation(androidAppLibs.androidx.compose.foundation)
-    implementation(androidAppLibs.androidx.navigation.runtime)
-    implementation(androidAppLibs.androidx.navigation.compose)
+    implementation(testAppLibs.androidx.lifecycle)
+    implementation(testAppLibs.androidx.activity)
+    implementation(testAppLibs.androidx.activity.compose)
+    implementation(testAppLibs.androidx.compose.ui)
+    implementation(testAppLibs.androidx.compose.ui.tooling)
+    implementation(testAppLibs.androidx.compose.material)
+    implementation(testAppLibs.androidx.compose.foundation)
+    implementation(testAppLibs.androidx.navigation.runtime)
+    implementation(testAppLibs.androidx.navigation.compose)
     // Need to use project.dependencies.platform() instead of platform()
     // due to this bug: https://youtrack.jetbrains.com/issue/KT-40489
     implementation(project.dependencies.platform("org.jetbrains.kotlin:kotlin-bom"))
