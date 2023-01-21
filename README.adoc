@@ -1,0 +1,28 @@
+= AsteroidOS Link - a Kotlin library for discovering and operating AsteroidOS smartwatches
+
+This is a Kotlin library for remotely controlling https://asteroidos.org/[AsteroidOS] smartwatches
+and for scanning and discovering such smartwatches. It is written as a Kotlin Multiplatform library,
+and heavily uses Kotlin coroutines. A simple test Android app is provided for trying out the library
+and for debugging and development.
+
+== API overview
+
+The main entrypoint is the `Watches` class. Instances of that class are created using OS specific
+versions of the `getWatches` function. `Watches` allows for scanning for smartwatches and provides
+functionality for acquiring `Watch` instances. This `Watch` interface provides methods and Kotlin
+https://kotlinlang.org/api/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines.flow/-state-flow/[State]
+and https://kotlinlang.org/api/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines.flow/-shared-flow/[Shared]
+flows for getting notifications from the smartwatch. To synchronize the watch datetime,
+https://github.com/Kotlin/kotlinx-datetime[kotlinx.datetime]'s `LocalDateTime` class is used.
+
+== TODO
+
+* Screenshot requests cannot currently be aborted. This is a limitation of the
+  https://asteroidos.org/wiki/ble-profiles/#screenshotprofile[AsteroidOS Screenshot Profile] in its
+  current form.
+* Android sometimes asks for pairing PINs more often than what should be necessary.
+* The Nordic BLE Library's `createBondInsecure` has to be used instead of `ensureBond` to reliably
+  establish connections.
+* Bluetooth errors during connection setup are currently not being handled fully and robustly.
+* The API documentation is https://kotlinlang.org/docs/kotlin-doc.html[KDoc] compliant, but documentation
+  files are not being generated. Integrate https://kotlinlang.org/docs/dokka-introduction.html[dokka] for that purpose.
