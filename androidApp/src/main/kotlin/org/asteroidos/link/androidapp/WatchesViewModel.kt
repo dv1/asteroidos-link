@@ -8,6 +8,7 @@
 
 package org.asteroidos.link.androidapp
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Job
@@ -15,10 +16,8 @@ import kotlinx.coroutines.cancelAndJoin
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
@@ -33,7 +32,8 @@ import org.asteroidos.link.Watch
 import org.asteroidos.link.Watches
 import org.asteroidos.link.WeatherConditionID
 import kotlin.random.Random
-import kotlin.random.nextInt
+
+private const val TAG = "AndroidApp.WatchesViewModel"
 
 class WatchesViewModel(private val watches: Watches, initialPairedWatch: Watch?) : ViewModel() {
     var discoveredWatchesList = listOf<Watches.DiscoveredWatch>()
@@ -60,7 +60,10 @@ class WatchesViewModel(private val watches: Watches, initialPairedWatch: Watch?)
                         .onEach { _screenshotProgress.emit(it) }
                         .launchIn(this)
                     watch.connectionState
-                        .onEach { _connectionState.emit(it) }
+                        .onEach {
+                            Log.d(TAG, "New connection state $it")
+                            _connectionState.emit(it)
+                        }
                         .launchIn(this)
                 }
             }
